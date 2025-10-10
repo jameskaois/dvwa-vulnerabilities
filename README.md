@@ -43,3 +43,4 @@ Each vulnerability is documented under a folder at /, you can see the list down 
 
 - [Brute-force](./brute-force/README.md)
 - [Command Injection](./command-injection/README.md)
+- [CSRF](./csrf/README.md)
