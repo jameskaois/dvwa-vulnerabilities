@@ -42,3 +42,4 @@ You can watch this official tutorial suggested by DVWA itself: [https://www.yout
 Each vulnerability is documented under a folder at /, you can see the list down here:
 
 - [Brute-force](./brute-force/README.md)
+- [Command Injection](./command-injection/README.md)
