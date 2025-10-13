@@ -46,3 +46,4 @@ Each vulnerability is documented under a folder at /, you can see the list down 
 - [CSRF](./csrf/README.md)
 - [File Upload](./file-upload/README.md)
 - [SQL Injection](./sql-injection/README.md)
+- [SQL Injection Blind](./sql-injection-blind/README.md)
