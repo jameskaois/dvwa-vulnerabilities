@@ -50,3 +50,4 @@ Each vulnerability is documented under a folder at /, you can see the list down 
 - [Weak Session IDs](./weak-session-ids/README.md)
 - [XSS (DOM)](./xss-dom/README.md)
 - [XSS (Reflected)](./xss-reflected/README.md)
+- [XSS (Stored)](./xss-stored/README.md)
