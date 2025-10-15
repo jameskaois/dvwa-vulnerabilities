@@ -51,4 +51,5 @@ Each vulnerability is documented under a folder at /, you can see the list down 
 - [XSS (DOM)](./xss-dom/README.md)
 - [XSS (Reflected)](./xss-reflected/README.md)
 - [XSS (Stored)](./xss-stored/README.md)
-- [CSP Bypas](./csp-bypass/README.md)
+- [CSP Bypass](./csp-bypass/README.md)
+- [JavaScript](./javascript-attacks/README.md)
