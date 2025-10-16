@@ -55,3 +55,4 @@ Each vulnerability is documented under a folder at /, you can see the list down 
 - [JavaScript](./javascript-attacks/README.md)
 - [Authorisation Bypass](./authorisation-bypass/README.md)
 - [Open HTTP Redirect](./open-http-redirect/README.md)
+- [Cryptography](./cryptography/README.md)
