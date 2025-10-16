@@ -2,8 +2,8 @@
 
 ## Description
 
-**Vulnerability:** Authorisation Bypass 
-**Impact:** Leveraging vulnerabilities to get access to user manager system.
+- **Vulnerability:** Authorisation Bypass 
+- **Impact:** Leveraging vulnerabilities to get access to user manager system.
 
 ---
 
